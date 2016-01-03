@@ -1,0 +1,26 @@
+{
+    "name": "culabs/testing-bundle",
+    "type": "symfony-bundle",
+    "description": "Api for testing in symfony2",
+    "keywords": ["symfony2-bundle", "testing"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Renier Ricardo Figueredo",
+            "email": "aprezcuba24@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "suggest": {
+        "fzaninotto/faker": "For data"
+    },
+    "autoload": {
+        "psr-0": {
+            "CULabs\\TestingBundle": ""
+        }
+    },
+    "target-dir": "CULabs/TestingBundle"
+}
