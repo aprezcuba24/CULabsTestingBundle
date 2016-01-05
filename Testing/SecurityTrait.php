@@ -61,11 +61,26 @@ trait SecurityTrait
 	}
 
 	/**
+	 * @param null $roles
 	 * @return $this
+	 * @throws \PHPUnit_Framework_AssertionFailedError
 	 */
-	public function isAuthenticated()
+	public function isAuthenticated($roles = null)
 	{
-		Assert::assertTrue($this->securityCollector()->isAuthenticated());
+		/**@var $securityCollector SecurityDataCollector*/
+		$securityCollector = $this->securityCollector();
+		Assert::assertTrue($securityCollector->isAuthenticated());
+		if (!$roles) {
+			return $this;
+		}
+		if (is_string($roles)) {
+			$roles = [$roles];
+		}
+		foreach ($roles as $role) {
+			if (!in_array($role, array_merge($securityCollector->getRoles(), $securityCollector->getInheritedRoles()))) {
+				throw new \PHPUnit_Framework_AssertionFailedError;
+			}
+		}
 
 		return $this;
 	}

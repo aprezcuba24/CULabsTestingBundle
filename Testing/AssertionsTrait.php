@@ -85,4 +85,44 @@ trait AssertionsTrait
 
 		return $this;
 	}
+
+	/**
+	 * @param $url
+	 * @return $this
+	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 */
+	public function isRedirectTo($url)
+	{
+		$location = $this->getRedirectLocation();
+		Assert::assertEquals($url, $location);
+
+		return $this;
+	}
+
+	/**
+	 * @return array|string
+	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 */
+	private function getRedirectLocation()
+	{
+		$location = $this->getClient()->getResponse()->headers->get('location');
+		if (!$location) {
+			throw new \PHPUnit_Framework_AssertionFailedError('The page is not redirect');
+		}
+
+		return $location;
+	}
+
+	/**
+	 * @param $pattern
+	 * @return $this
+	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 */
+	public function isRedirectToRegExp($pattern)
+	{
+		$location = $this->getRedirectLocation();
+		Assert::assertRegExp($pattern, $location);
+
+		return $this;
+	}
 }
