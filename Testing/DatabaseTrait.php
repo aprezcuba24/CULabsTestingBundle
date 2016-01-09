@@ -45,7 +45,7 @@ trait DatabaseTrait
 	public function makeEntity($class, array $data, $flush = true)
 	{
 		if (isset($this->entityFactories[$class])) {
-			$data = array_merge($this->entityFactories[$class](), $data);
+			$data = $this->entityFactories[$class]($data);
 		}
 		$entity = new $class;
 		foreach ($data as $key => $value) {
