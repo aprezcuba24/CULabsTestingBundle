@@ -21,7 +21,7 @@ trait FormTrait
 	}
 
 	/**
-	 * @param \Symfony\Component\DomCrawler\Form $form
+	 * @param Form|string $form
 	 * @param array $values
 	 * @return $this
 	 */
