@@ -136,4 +136,16 @@ trait AssertionsTrait
 
 		return $this;
 	}
+
+	/**
+	 * @param $expected
+	 * @param $actual
+	 * @return $this
+	 */
+	public function equals($expected, $actual)
+	{
+		Assert::assertEquals($expected, $actual);
+
+		return $this;
+	}
 }
