@@ -27,6 +27,17 @@ trait AssertionsTrait
 	}
 
 	/**
+	 * @param $status
+	 * @return $this
+	 */
+	public function statusIs($status)
+	{
+		Assert::assertEquals($status, $this->getClient()->getResponse()->getStatusCode());
+
+		return $this;
+	}
+
+	/**
 	 * @param bool|TRUE $followRedirect
 	 * @return $this
 	 */
