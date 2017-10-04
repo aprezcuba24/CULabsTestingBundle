@@ -8,7 +8,7 @@ namespace CULabs\TestingBundle\Testing;
 
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\Common\Inflector\Inflector;
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert;
 use Symfony\Component\Process\Process;
 
 trait DatabaseTrait

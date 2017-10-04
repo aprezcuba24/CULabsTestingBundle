@@ -6,7 +6,7 @@
  */
 namespace CULabs\TestingBundle\Testing;
 
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 trait RESTTrait

@@ -6,7 +6,8 @@
  */
 namespace CULabs\TestingBundle\Testing;
 
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert as Assert;
+use PHPUnit\Framework\AssertionFailedError;
 
 trait AssertionsTrait
 {
@@ -100,7 +101,7 @@ trait AssertionsTrait
 	/**
 	 * @param $url
 	 * @return $this
-	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 * @throws AssertionFailedError
 	 */
 	public function isRedirectTo($url)
 	{
@@ -112,13 +113,13 @@ trait AssertionsTrait
 
 	/**
 	 * @return array|string
-	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 * @throws AssertionFailedError
 	 */
 	private function getRedirectLocation()
 	{
 		$location = $this->getClient()->getResponse()->headers->get('location');
 		if (!$location) {
-			throw new \PHPUnit_Framework_AssertionFailedError('The page is not redirect');
+			throw new AssertionFailedError('The page is not redirect');
 		}
 
 		return $location;
@@ -127,7 +128,7 @@ trait AssertionsTrait
 	/**
 	 * @param $pattern
 	 * @return $this
-	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 * @throws AssertionFailedError
 	 */
 	public function isRedirectToRegExp($pattern)
 	{

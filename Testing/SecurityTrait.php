@@ -6,10 +6,11 @@
  */
 namespace CULabs\TestingBundle\Testing;
 
+use PHPUnit\Framework\AssertionFailedError;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\BrowserKit\Cookie;
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert as Assert;
 
 trait SecurityTrait
 {
@@ -63,7 +64,7 @@ trait SecurityTrait
 	/**
 	 * @param null $roles
 	 * @return $this
-	 * @throws \PHPUnit_Framework_AssertionFailedError
+	 * @throws AssertionFailedError
 	 */
 	public function isAuthenticated($roles = null)
 	{
@@ -78,7 +79,7 @@ trait SecurityTrait
 		}
 		foreach ($roles as $role) {
 			if (!in_array($role, array_merge($securityCollector->getRoles(), $securityCollector->getInheritedRoles()))) {
-				throw new \PHPUnit_Framework_AssertionFailedError;
+				throw new AssertionFailedError;
 			}
 		}
 

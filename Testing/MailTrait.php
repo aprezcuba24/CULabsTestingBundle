@@ -7,7 +7,7 @@
 namespace CULabs\TestingBundle\Testing;
 
 use Doctrine\Common\Util\Inflector;
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert;
 
 trait MailTrait
 {
